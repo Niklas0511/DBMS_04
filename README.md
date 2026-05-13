@@ -1,3 +1,4 @@
+<img width="825" height="506" alt="DBMS4_1" src="https://github.com/user-attachments/assets/8474c0d1-9d82-4d0e-aba1-506ffb8a79e4" />
 # DBMS_04 – Normalization in Practice: From Plain Text to DDL
 
 **Module:** Databases · THGA Bochum  
@@ -46,7 +47,8 @@ git --version
 > **Screenshot 1:** Take a screenshot of your terminal showing all three
 > successful version checks and insert it here.
 >
-> `[insert screenshot]`
+> <img width="825" height="506" alt="DBMS4_1" src="https://github.com/user-attachments/assets/5b57b626-3aba-43f9-baee-041724720080" />
+
 
 ---
 
@@ -99,6 +101,9 @@ Read the table carefully and describe one concrete example of each:
    deleted entirely?
 
 > *Your answers:*
+>1.: 1st,2nd and 4th Row
+> 2.:No, OrderNo, Date CustNo, CustName. CustCity, Plate, Make, Model, Year, ItemNo, Description and Hours
+> 3.: Customer Novak, Jana and CustCity Herne 
 
 ### Task 1b – Write Down Functional Dependencies
 
@@ -120,11 +125,12 @@ respect to the primary key `(OrderNo, ItemNo)`? Justify your answer using the
 definition from Lecture 04.
 
 > *Your answer:*
+> Partial, CustNo only depends on OrderNo
 
 **Question 1.2:** Identify a transitive dependency in the flat table and explain
 why it violates 3NF.
 
-> *Your answer:*
+> *Your answer:* CustCity depends on CustName and CustName depends on CustNo
 
 **Question 1.3:** Compute the attribute closure $\{\mathrm{OrderNo}\}^+$ using
 your FD list. Is `OrderNo` alone a superkey of the flat table?
@@ -154,7 +160,7 @@ then fill in the table below.
 Check: In every relation, does each non-key attribute depend on the **complete**
 primary key?
 
-> *Your check:*
+> *Your check:* Yes every work_item attribute needs the full Primary Key
 
 ### Task 2b – Decompose into 3NF
 
@@ -169,7 +175,7 @@ Examine `order` and `vehicle` for transitive dependencies.
 State your conclusion: are all five relations from Task 2a already in 3NF?
 If not, perform the missing decomposition.
 
-> *Your analysis and any further decomposition:*
+> *Your analysis and any further decomposition:* cust_name is dependend on cust_no through the customer Relation and not in order
 
 ### Task 2c – Verify Losslessness
 
@@ -182,7 +188,9 @@ Name the shared attributes, state the FD you rely on, and conclude whether the
 decomposition is lossless.
 
 > *Your verification:*
-
+> R1​∩R2​={plate,cust_no}
+> R2∖R1={make,model,year
+->lossless
 ### Questions for Task 2
 
 **Question 2.1:** Why must `cust_no` remain as a foreign key in `order` even
@@ -190,20 +198,22 @@ though the customer is also reachable via the vehicle's licence plate?
 Describe a realistic scenario where the direct link `order → customer` is
 necessary.
 
-> *Your answer:*
+> *Your answer:* The owner of the Vehicle and the Person placing the order can be diffrent Persons
 
 **Question 2.2:** Is the schema after the 3NF decomposition also in BCNF?
 Justify your answer using the definition: for every non-trivial FD $X \rightarrow Y$,
 $X$ must be a superkey.
 
-> *Your answer:*
+> *Your answer:*Every determinant is a primary key, therefore a superkey.
+
+->The schema is in BCNF.
 
 **Question 2.3:** The hourly rate of a mechanic is stored in `mechanic`. If a
 mechanic changes their rate during the year, what problem arises for already
 completed orders? How could the schema be extended to correctly record
 historical hourly rates?
 
-> *Your answer:*
+> *Your answer:*Old Jobs of the mechanic change prices. hourly_rate must be identified by Date
 
 ---
 
@@ -311,7 +321,8 @@ scp <username>@<server>:/path/to/DBMS_04/schema.svg ~/Downloads/schema.svg
 > **Screenshot 2:** Take a screenshot showing the rendered diagram with all
 > five entities and their relationships.
 >
-> `[insert screenshot]`
+> <img width="382" height="714" alt="image" src="https://github.com/user-attachments/assets/ac7cebb6-bb59-43e3-aac0-e674ce8b5c56" />
+
 
 ### Task 3c – Commit
 
@@ -412,7 +423,8 @@ sqlite3 workshop.db ".tables"
 
 > **Screenshot 3:** Take a screenshot showing the `.tables` output.
 >
-> `[insert screenshot]`
+> <img width="434" height="38" alt="image" src="https://github.com/user-attachments/assets/a0db3a4e-27d0-43b5-bf06-0c10495c310d" />
+
 
 ### Task 4c – Insert Sample Data
 
